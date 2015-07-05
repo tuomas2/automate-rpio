@@ -11,7 +11,7 @@ def get_version(filename):
         return metadata['version']
 
 setupopts = dict(
-    name="automate_rpio",
+    name="automate-rpio",
     version=get_version('automate_rpio/__init__.py'),
     packages=find_packages(),
     install_requires=[str(ir.req) for ir in install_reqs],
