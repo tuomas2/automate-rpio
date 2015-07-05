@@ -1,2 +1,3 @@
 *.pyc
 /automate_rpio.egg-info/
+/dist/
