@@ -15,11 +15,10 @@ setupopts = dict(
     version=get_version('automate_rpio/__init__.py'),
     packages=find_packages(),
     install_requires=[str(ir.req) for ir in install_reqs],
-    # metadata for upload to PyPI
     author="Tuomas Airaksinen",
     author_email="tuomas.airaksinen@gmail.com",
-    description="Automate webui",
-    long_description="automate webui long description",
+    description="Raspberry Pi GPIO Support for Automate",
+    long_description="This extension provides interface to Raspberry Pi GPIO via RPIO library. RPIO library.",
     license="GPL",
     keywords="automation, GPIO, Raspberry Pi, RPIO, traits",
     url="http://github.com/tuomas2/automate_webui",
