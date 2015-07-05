@@ -22,7 +22,7 @@ setupopts = dict(
     long_description="This extension provides interface to Raspberry Pi GPIO via RPIO library. RPIO library.",
     license="GPL",
     keywords="automation, GPIO, Raspberry Pi, RPIO, traits",
-    url="http://github.com/tuomas2/automate_webui",
+    url="http://github.com/tuomas2/automate-rpio",
     entry_points={'automate.extension': [
             'rpio = automate_rpio:extension_classes'
     ]},
