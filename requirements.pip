@@ -1,3 +1,2 @@
-automate
-RPIO
-#RPi
+automate==0.9
+RPIO==0.10.0
