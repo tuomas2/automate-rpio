@@ -2,7 +2,8 @@ Raspberry Pi GPIO Support for Automate
 ======================================
 
 Automate is a general purpose Python automatization library.
-Read the documentation at http://tuomasairaksinen.fi/automate/docs/
+Read the documentation at
+http://python-automate.readthedocs.org/en/latest/official_extensions/rpio.html
 
 Licence
 -------
