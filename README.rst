@@ -16,7 +16,7 @@ Optionally, you could install also by cloning GIT repository and installing manu
     git clone https://github.com/tuomas2/automate-rpio.git
     cd automate-rpio
     ./setup.py install
-    
+
 Licence
 -------
 
