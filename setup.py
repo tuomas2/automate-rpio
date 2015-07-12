@@ -13,7 +13,7 @@ setupopts = dict(
     version=get_version('automate_rpio/__init__.py'),
     packages=find_packages(),
     install_requires=[
-        "automate>=0.9.2,<=0.10",
+        "automate>=0.9.2,<0.10",
         "RPIO==0.10",
         "mock==1.0.1"],
     author="Tuomas Airaksinen",
