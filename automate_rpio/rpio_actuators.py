@@ -16,6 +16,7 @@
 # You should have received a copy of the GNU General Public License
 # along with automate-rpio.  If not, see <http://www.gnu.org/licenses/>.
 
+from __future__ import unicode_literals
 from traits.api import CInt, CBool, Instance, Any, CFloat, Property
 from automate.service import AbstractSystemService
 from automate.statusobject import AbstractActuator

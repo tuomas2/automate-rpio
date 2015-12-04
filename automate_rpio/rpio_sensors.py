@@ -17,6 +17,7 @@
 # along with automate-rpio.  If not, see <http://www.gnu.org/licenses/>.
 
 from __future__ import division
+from __future__ import unicode_literals
 from traits.api import Instance, Int, Bool, Enum, CUnicode, CFloat, CBool
 from automate.sensors import UserBoolSensor, AbstractPollingSensor, UserFloatSensor
 from automate.service import AbstractSystemService
