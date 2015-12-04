@@ -16,7 +16,7 @@ setupopts = dict(
     install_requires=[
         "automate>=0.9.2,<0.10",
         "RPIO==0.10",
-        "mock==1.0.1"],
+        "mock==1.3.0"],
     author="Tuomas Airaksinen",
     author_email="tuomas.airaksinen@gmail.com",
     description="Raspberry Pi GPIO Support for Automate",
