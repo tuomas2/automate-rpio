@@ -49,7 +49,6 @@ class RpioService(AbstractSystemService):
             self.logger.warning("To use Raspberry Pi GPIO ports (sensors / actuators) please install module RPIO")
             import mock
             RPIO = mock.MagicMock()
-            RPIO.wait_for_interrupts = lambda *args, **kwargs: None
 
         self._RPIO = RPIO
 
