@@ -17,6 +17,9 @@
 # along with automate-rpio.  If not, see <http://www.gnu.org/licenses/>.
 
 from __future__ import unicode_literals
+
+from threading import Thread
+
 from traits.api import CBool, Any
 from automate.service import AbstractSystemService
 import signal
@@ -32,6 +35,8 @@ class RpioService(AbstractSystemService):
     #: Perform GPIO cleanup when exiting (default: False).
     gpio_cleanup = CBool(False)
 
+    _gpio_thread = Any
+
     _RPIO = Any
 
     def setup(self):
@@ -44,16 +49,20 @@ class RpioService(AbstractSystemService):
             self.logger.warning("To use Raspberry Pi GPIO ports (sensors / actuators) please install module RPIO")
             import mock
             RPIO = mock.MagicMock()
+            RPIO.wait_for_interrupts = lambda *args, **kwargs: None
 
         self._RPIO = RPIO
 
         self._RPIO.setmode(RPIO.BCM)
-        RPIO.wait_for_interrupts(threaded=True)
+        self._gpio_thread = t = Thread(target=RPIO.wait_for_interrupts, name='RpioService thread')
+        t.start()
+
         self.logger.info("RPIO initialized")
 
     def cleanup(self):
         self._RPIO.stop_waiting_for_interrupts()
         self._RPIO.cleanup_interrupts()
+        self._gpio_thread.join()
         if self.gpio_cleanup:
             self._RPIO.cleanup()
 
