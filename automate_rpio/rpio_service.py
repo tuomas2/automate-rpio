@@ -54,6 +54,7 @@ class RpioService(AbstractSystemService):
 
         self._RPIO.setmode(RPIO.BCM)
         self._gpio_thread = t = Thread(target=RPIO.wait_for_interrupts, name='RpioService thread')
+        t.daemon = True
         t.start()
 
         self.logger.info("RPIO initialized")
