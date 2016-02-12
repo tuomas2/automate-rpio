@@ -81,8 +81,18 @@ class TemperatureSensor(AbstractPollingSensor):
     #: Address of W1 temperature sensor (something like ``"28-00000558263c"``), see what you have in
     #: ``/sys/bus/w1/devices/``
     addr = CUnicode
-
     view = list(set(UserFloatSensor.view + AbstractPollingSensor.view + ["addr"]))
+
+    #: Maximum jump in temperature, between measurements. These temperature sensors
+    #: tend to give sometimes erroneous results.
+    max_jump = CFloat(5.0)
+
+    _error_count = Int(0, transient=True)
+
+    #: Maximum number of erroneous measurements, until value is really set
+    max_errors = Int(5)
+
+    _first_reading = CBool(True, transient=True)
 
     def get_status_display(self, **kwargs):
         if 'value' in kwargs:
@@ -103,5 +113,10 @@ class TemperatureSensor(AbstractPollingSensor):
         except IOError:
             self.logger.error("IO-error in temperature sensor %s, not set", self.name)
             return
-        self.set_status(temp)
+        if abs(temp-self.status) > self.max_jump and self._error_count < self.max_errors and not self._first_reading:
+            self._error_count += 1
+        else:
+            self._first_reading = False
+            self._error_count = 0
+            self.set_status(temp)
         f.close()
